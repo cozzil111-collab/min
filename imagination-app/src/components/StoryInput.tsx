@@ -101,7 +101,7 @@ export default function StoryInput({ value, onChange, onSubmit, disabled }: Prop
           placeholder={placeholder}
           disabled={disabled}
           rows={5}
-          className="w-full p-5 bg-white/10 border-2 border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:border-lavender focus:ring-2 focus:ring-lavender/20 resize-none transition-all duration-200 disabled:opacity-50"
+          className="w-full p-5 bg-white border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 resize-none transition-all duration-200 disabled:opacity-50"
           style={{ fontSize: '20px', lineHeight: '1.6' }}
         />
         <button
@@ -111,7 +111,7 @@ export default function StoryInput({ value, onChange, onSubmit, disabled }: Prop
           className={`absolute bottom-4 right-4 p-3 rounded-xl transition-all duration-200 min-h-0 min-w-0 ${
             isListening
               ? 'bg-red-500 text-white animate-pulse'
-              : 'bg-white/20 text-white/70 hover:bg-white/30 hover:text-white'
+              : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-800'
           }`}
           title={isListening ? '음성 입력 중지' : '음성으로 이야기하기'}
         >
@@ -120,21 +120,21 @@ export default function StoryInput({ value, onChange, onSubmit, disabled }: Prop
       </div>
 
       {isListening && (
-        <div className="flex items-center gap-2 text-red-300 text-sm animate-pulse">
-          <span className="w-2 h-2 bg-red-400 rounded-full" />
+        <div className="flex items-center gap-2 text-red-600 text-sm animate-pulse">
+          <span className="w-2 h-2 bg-red-500 rounded-full" />
           듣고 있어요... 이야기를 말해주세요 🎤
         </div>
       )}
 
       {speechError && (
-        <p className="text-yellow-300 text-sm">{speechError}</p>
+        <p className="text-orange-600 text-sm">{speechError}</p>
       )}
 
       <div className="flex justify-between items-center text-sm">
-        <span className="text-white/40">
+        <span className="text-gray-500">
           {value.length > 0 ? `${value.length}자 입력됨` : '아이의 이야기를 입력하거나 말해주세요'}
         </span>
-        <span className={`${isNearLimit ? 'text-yellow-300' : 'text-white/40'}`}>
+        <span className={`${isNearLimit ? 'text-orange-600 font-medium' : 'text-gray-400'}`}>
           {remaining}자 남음
         </span>
       </div>
@@ -142,7 +142,7 @@ export default function StoryInput({ value, onChange, onSubmit, disabled }: Prop
       <button
         onClick={onSubmit}
         disabled={disabled || !value.trim()}
-        className="w-full py-4 bg-gradient-to-r from-peach to-peach-dark rounded-2xl text-white font-bold text-xl hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-40 disabled:scale-100 flex items-center justify-center gap-3"
+        className="w-full py-4 bg-gradient-to-r from-orange-400 to-pink-500 rounded-2xl text-white font-bold text-xl hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-40 disabled:scale-100 flex items-center justify-center gap-3"
       >
         <Sparkles className="w-6 h-6" />
         마법 만들기 ✨

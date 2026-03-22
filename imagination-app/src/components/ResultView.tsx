@@ -25,8 +25,8 @@ export default function ResultView({ content, story, onSave, onReset, isSaved }:
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-white text-xl font-bold">{MODE_TITLES[content.mode]}</h2>
-          <p className="text-white/50 text-sm mt-0.5 line-clamp-1">"{story}"</p>
+          <h2 className="text-gray-900 text-xl font-bold">{MODE_TITLES[content.mode]}</h2>
+          <p className="text-gray-500 text-sm mt-0.5 line-clamp-1">"{story}"</p>
         </div>
       </div>
 
@@ -44,14 +44,14 @@ export default function ResultView({ content, story, onSave, onReset, isSaved }:
       </div>
 
       {/* Action bar */}
-      <div className="flex items-center justify-between gap-3 pt-2 border-t border-white/10 flex-wrap">
+      <div className="flex items-center justify-between gap-3 pt-2 border-t border-gray-200 flex-wrap">
         <div className="flex items-center gap-3">
           <button
             onClick={onSave}
             className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-medium transition-all duration-200 ${
               isSaved
-                ? 'bg-red-500/30 border border-red-400/30 text-red-200'
-                : 'bg-white/10 hover:bg-white/20 border border-white/20 text-white'
+                ? 'bg-red-50 border border-red-200 text-red-600'
+                : 'bg-white hover:bg-gray-50 border border-gray-200 text-gray-700'
             }`}
           >
             <Heart className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
@@ -62,7 +62,7 @@ export default function ResultView({ content, story, onSave, onReset, isSaved }:
 
         <button
           onClick={onReset}
-          className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-lavender/30 to-mint/30 hover:from-lavender/50 hover:to-mint/50 border border-lavender/30 rounded-2xl text-white transition-all duration-200 text-sm font-medium"
+          className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl text-white transition-all duration-200 text-sm font-medium hover:scale-105 shadow-sm"
         >
           <RefreshCw className="w-4 h-4" />
           다시 만들기

@@ -41,17 +41,17 @@ export default function ApiKeySetup({ onKeySet, isModal, onClose }: Props) {
   };
 
   const content = (
-    <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 w-full max-w-md mx-auto shadow-2xl border border-white/20">
+    <div className="bg-white rounded-3xl p-8 w-full max-w-md mx-auto shadow-xl border border-purple-100">
       <div className="text-center mb-8">
         <div className="text-6xl mb-4 animate-bounce-gentle">🪄</div>
-        <h1 className="text-3xl font-bold text-white mb-2">상상 동화 마법사</h1>
-        <p className="text-white/80 text-sm">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">상상 동화 마법사</h1>
+        <p className="text-gray-600 text-sm">
           아이의 이야기를 마법 같은 그림과 동화로 만들어드려요
         </p>
       </div>
 
-      <div className="bg-white/5 rounded-2xl p-4 mb-6 border border-white/10">
-        <p className="text-white/70 text-xs leading-relaxed">
+      <div className="bg-purple-50 rounded-2xl p-4 mb-6 border border-purple-100">
+        <p className="text-gray-600 text-xs leading-relaxed">
           🔒 API Key는 이 기기에만 임시 저장되며, 외부로 전송되지 않아요.
           <br />
           Google AI Studio에서 무료로 발급받을 수 있어요.
@@ -60,36 +60,36 @@ export default function ApiKeySetup({ onKeySet, isModal, onClose }: Props) {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="relative">
-          <Key className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 w-5 h-5" />
+          <Key className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type={showKey ? 'text' : 'password'}
             value={key}
             onChange={(e) => setKey(e.target.value)}
             placeholder="Gemini API Key를 입력하세요"
-            className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:border-lavender focus:ring-2 focus:ring-lavender/30 text-sm"
+            className="w-full pl-12 pr-12 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-200 text-sm"
             autoComplete="off"
             spellCheck={false}
           />
           <button
             type="button"
             onClick={() => setShowKey(!showKey)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors min-h-0 min-w-0"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 transition-colors min-h-0 min-w-0"
           >
             {showKey ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
           </button>
         </div>
 
         {error && (
-          <div className="flex items-start gap-2 bg-red-500/20 border border-red-400/30 rounded-xl p-3">
-            <AlertCircle className="w-4 h-4 text-red-300 flex-shrink-0 mt-0.5" />
-            <p className="text-red-200 text-sm">{error}</p>
+          <div className="flex items-start gap-2 bg-red-50 border border-red-200 rounded-xl p-3">
+            <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+            <p className="text-red-700 text-sm">{error}</p>
           </div>
         )}
 
         <button
           type="submit"
           disabled={isValidating || !key.trim()}
-          className="w-full py-4 bg-gradient-to-r from-lavender to-lavender-dark rounded-2xl text-white font-bold text-lg hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2"
+          className="w-full py-4 bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl text-white font-bold text-lg hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2"
         >
           {isValidating ? (
             <>
@@ -108,7 +108,7 @@ export default function ApiKeySetup({ onKeySet, isModal, onClose }: Props) {
           <button
             type="button"
             onClick={onClose}
-            className="w-full py-3 text-white/60 hover:text-white transition-colors text-sm"
+            className="w-full py-3 text-gray-500 hover:text-gray-800 transition-colors text-sm"
           >
             취소
           </button>
@@ -120,7 +120,7 @@ export default function ApiKeySetup({ onKeySet, isModal, onClose }: Props) {
           href="https://aistudio.google.com/app/apikey"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-lavender hover:text-white text-sm transition-colors underline underline-offset-2"
+          className="text-violet-600 hover:text-violet-800 text-sm transition-colors underline underline-offset-2"
         >
           API Key 발급받기 →
         </a>
@@ -130,16 +130,14 @@ export default function ApiKeySetup({ onKeySet, isModal, onClose }: Props) {
 
   if (isModal) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-sm">
         {content}
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="stars-layer-1" />
-      <div className="stars-layer-2" />
+    <div className="day-sky min-h-screen flex items-center justify-center p-4">
       <div className="relative z-10 w-full">
         {content}
       </div>

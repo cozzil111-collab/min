@@ -15,7 +15,7 @@ export default function ImageGallery({ images }: Props) {
           <button
             key={i}
             onClick={() => setLightboxIdx(i)}
-            className="relative group rounded-2xl overflow-hidden aspect-square bg-white/10 hover:scale-102 transition-all duration-200 shadow-lg min-h-0 min-w-0"
+            className="relative group rounded-2xl overflow-hidden aspect-square bg-gray-100 hover:scale-[1.02] transition-all duration-200 shadow-md min-h-0 min-w-0"
           >
             <img
               src={src}
@@ -23,8 +23,8 @@ export default function ImageGallery({ images }: Props) {
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 flex items-center justify-center">
-              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-all duration-200 flex items-center justify-center">
+              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 drop-shadow-lg" />
             </div>
             <div className="absolute bottom-2 right-2 bg-black/40 text-white text-xs px-2 py-1 rounded-lg">
               장면 {i + 1}
@@ -35,11 +35,11 @@ export default function ImageGallery({ images }: Props) {
 
       {lightboxIdx !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
           onClick={() => setLightboxIdx(null)}
         >
           <button
-            className="absolute top-4 right-4 p-2 bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors min-h-0 min-w-0"
+            className="absolute top-4 right-4 p-2 bg-white/20 hover:bg-white/40 rounded-full text-white transition-colors min-h-0 min-w-0"
             onClick={() => setLightboxIdx(null)}
           >
             <X className="w-6 h-6" />
@@ -57,8 +57,8 @@ export default function ImageGallery({ images }: Props) {
               <button
                 key={i}
                 onClick={(e) => { e.stopPropagation(); setLightboxIdx(i); }}
-                className={`w-2 h-2 rounded-full transition-all min-h-0 min-w-0 ${
-                  i === lightboxIdx ? 'bg-white w-6' : 'bg-white/40'
+                className={`h-2 rounded-full transition-all min-h-0 min-w-0 ${
+                  i === lightboxIdx ? 'bg-white w-6' : 'bg-white/40 w-2'
                 }`}
               />
             ))}

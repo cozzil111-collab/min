@@ -59,17 +59,12 @@ export default function App() {
     setShowHistory(false);
   }, []);
 
-  // Show full-screen API key setup on first load
   if (!apiKey) {
     return <ApiKeySetup onKeySet={handleKeySet} />;
   }
 
   return (
-    <div className="night-sky min-h-screen relative">
-      {/* Stars */}
-      <div className="stars-layer-1" />
-      <div className="stars-layer-2" />
-
+    <div className="day-sky min-h-screen relative">
       {/* Content */}
       <div className="relative z-10 max-w-2xl mx-auto px-4 pb-12">
         {/* Header */}
@@ -77,26 +72,26 @@ export default function App() {
           <div className="flex items-center gap-3">
             <span className="text-3xl animate-bounce-gentle">🪄</span>
             <div>
-              <h1 className="text-white font-bold text-xl leading-none">상상 동화 마법사</h1>
-              <p className="text-white/40 text-xs">Powered by Gemini AI</p>
+              <h1 className="text-gray-900 font-bold text-xl leading-none">상상 동화 마법사</h1>
+              <p className="text-gray-500 text-xs">Powered by Gemini AI</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setShowHistory(true)}
-              className="relative p-3 bg-white/10 hover:bg-white/20 rounded-2xl text-white transition-all duration-200 min-h-0 min-w-0"
+              className="relative p-3 bg-white/60 hover:bg-white/90 rounded-2xl text-gray-700 transition-all duration-200 min-h-0 min-w-0 shadow-sm border border-purple-200/50"
               title="히스토리"
             >
               <History className="w-5 h-5" />
               {history.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-lavender text-white text-[10px] rounded-full flex items-center justify-center font-bold">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-violet-500 text-white text-[10px] rounded-full flex items-center justify-center font-bold">
                   {Math.min(history.length, 9)}
                 </span>
               )}
             </button>
             <button
               onClick={() => setShowApiSetup(true)}
-              className="p-3 bg-white/10 hover:bg-white/20 rounded-2xl text-white transition-all duration-200 min-h-0 min-w-0"
+              className="p-3 bg-white/60 hover:bg-white/90 rounded-2xl text-gray-700 transition-all duration-200 min-h-0 min-w-0 shadow-sm border border-purple-200/50"
               title="API Key 변경"
             >
               <Key className="w-5 h-5" />
@@ -119,20 +114,20 @@ export default function App() {
           ) : (
             <>
               {/* Welcome card */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/20 text-center">
+              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 border border-purple-200/40 text-center shadow-sm">
                 <div className="flex justify-center gap-3 text-3xl mb-3">
                   <span className="animate-float" style={{ animationDelay: '0s' }}>⭐</span>
                   <span className="animate-float" style={{ animationDelay: '0.5s' }}>🌙</span>
                   <span className="animate-float" style={{ animationDelay: '1s' }}>☁️</span>
                 </div>
-                <h2 className="text-white text-lg font-bold mb-1">어떤 이야기를 만들까요?</h2>
-                <p className="text-white/60 text-sm">아이의 상상을 마법 같은 동화로 만들어드려요</p>
+                <h2 className="text-gray-900 text-lg font-bold mb-1">어떤 이야기를 만들까요?</h2>
+                <p className="text-gray-600 text-sm">아이의 상상을 마법 같은 동화로 만들어드려요</p>
               </div>
 
               {/* Story input */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-5 border border-white/10">
-                <h3 className="text-white/80 font-semibold mb-3 flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-lavender" />
+              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-5 border border-purple-200/40 shadow-sm">
+                <h3 className="text-gray-800 font-semibold mb-3 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-violet-500" />
                   이야기를 들려주세요
                 </h3>
                 <StoryInput
@@ -144,8 +139,8 @@ export default function App() {
               </div>
 
               {/* Mode selector */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-5 border border-white/10">
-                <h3 className="text-white/80 font-semibold mb-3 flex items-center gap-2">
+              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-5 border border-purple-200/40 shadow-sm">
+                <h3 className="text-gray-800 font-semibold mb-3 flex items-center gap-2">
                   <span>🎭</span>
                   어떻게 만들까요?
                 </h3>
@@ -154,11 +149,11 @@ export default function App() {
 
               {/* Error message */}
               {error && (
-                <div className="bg-white/10 border border-white/20 rounded-2xl p-4 text-center animate-fade-in">
-                  <p className="text-white text-base">{error}</p>
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-4 text-center animate-fade-in">
+                  <p className="text-gray-800 text-base">{error}</p>
                   <button
                     onClick={() => setError(null)}
-                    className="mt-2 text-white/40 hover:text-white text-sm transition-colors min-h-0 min-w-0"
+                    className="mt-2 text-gray-500 hover:text-gray-800 text-sm transition-colors min-h-0 min-w-0"
                   >
                     닫기
                   </button>
