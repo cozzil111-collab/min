@@ -31,7 +31,7 @@ export async function generateStoryText(
   story: string
 ): Promise<StoryChapter[]> {
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = buildTextPrompt(story);
   const result = await model.generateContent(prompt);
   const text = result.response.text();
@@ -49,7 +49,7 @@ export async function generateInteractiveScene(
   story: string
 ): Promise<InteractiveScene> {
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = buildInteractivePrompt(story);
   const result = await model.generateContent(prompt);
   const text = result.response.text();
@@ -61,6 +61,6 @@ export async function generateInteractiveScene(
 
 export async function validateApiKey(apiKey: string): Promise<void> {
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   await model.generateContent("안녕");
 }
