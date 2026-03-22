@@ -1,0 +1,5 @@
+reservations.json
+rooms.json
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
