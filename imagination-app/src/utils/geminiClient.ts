@@ -8,7 +8,7 @@ export async function generateStoryImage(
 ): Promise<string> {
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
-    model: "gemini-3-pro-image-preview",
+    model: "gemini-2.0-flash-exp-image-generation",
   });
   const result = await model.generateContent({
     contents: [{ role: "user", parts: [{ text: prompt }] }],
